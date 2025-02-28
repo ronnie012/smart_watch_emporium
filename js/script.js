@@ -36,3 +36,24 @@ function selectWristSize(size) {
   
   }
 }
+
+const quantityElements = document.querySelectorAll(".quantity-button");
+for (let btn of quantityElements) {
+  btn.addEventListener("click", function(event) {
+
+    const amount = event.target.innerText === "+" ? 1 : -1; // +1 or -1;
+    // Ternary Alt.
+    // if (event.target.innerText === "+") {
+    //   return 1;
+    // } else {
+    //   -1
+    // }
+    // console.log(event.target.innerText);
+
+    const quantityElement =document.getElementById("quantity");
+    const currentQuantity =parseInt(quantityElement.innerText);//targeted 0;
+
+    const newQuantity = Math.max(0, currentQuantity + amount); //(0,1) => 1;
+    quantityElement.innerText = newQuantity;
+  })
+}
